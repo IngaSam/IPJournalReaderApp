@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -11,25 +12,52 @@ namespace IPJournalReaderApp
     {
         static void Main(string[] args)
         {
-            string path = "D://training/C#/hhTest/IPReaderApp/file/log/note.txt";
-            string pathW = "D://training/C#/hhTest/IPReaderApp/file/output/noteW.txt";
+            Console.WriteLine(" Введите путь к входному файлу");
+            string path = Console.ReadLine();
+            Console.WriteLine(" Введите путь к выходному файлу");
+            string pathW = Console.ReadLine(); 
+
+           /* string path = "D://training/C#/hhTest/IPReaderApp/file/log/note.txt";
+            string pathW = "D://training/C#/hhTest/IPReaderApp/file/output/noteW.txt";*/
+            
+            var ip = new Dictionary<string, int>();
+
+            Console.WriteLine(" Введите нижнюю границу временного интервала в формате dd.MM.yyyy");
+            string timeS=Console.ReadLine();
+            Console.WriteLine(" Введите верхнюю границу временного интервала в формате dd.MM.yyyy");
+            string timeE=Console.ReadLine();
+
+            DateTime timeStart=DateTime.ParseExact(timeS, "dd.MM.yyyy", CultureInfo.InvariantCulture);
+            DateTime timeEnd = DateTime.ParseExact(timeE, "dd.MM.yyyy", CultureInfo.InvariantCulture);
+
             using (StreamReader reader = new StreamReader(path))
             {
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    Console.WriteLine(line);
+                    int index=line.IndexOf(":");
+                    var lineIP=line.Substring(0, index);
+                    var lineTime=line.Substring(index+1, line.Length-index-1);
+                    
+                    DateTime dateTime = DateTime.Parse(lineTime);
 
+                    if ((dateTime > timeStart) && (dateTime < timeEnd))
+                    {                      
+                        if (ip.ContainsKey(lineIP))
+                            ip[lineIP]++;
+                        else
+                            ip.Add(lineIP, 1);
+                    }
                 }
             }
-
+            
             using (StreamWriter writer = new StreamWriter(pathW, true))
             {
-                writer.WriteLine("123");
+                foreach (var item in ip)
+                {
+                    writer.WriteLine($"key: {item.Key} value:{item.Value}");
+                }          
             }
-
-
-            Console.ReadLine();
         }
     }
 }
