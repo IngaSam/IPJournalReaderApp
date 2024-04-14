@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPJournalReaderApp", "IPJournalReaderApp\IPJournalReaderApp.csproj", "{1B736907-27A3-4DA4-B53B-D1259F0913E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B736907-27A3-4DA4-B53B-D1259F0913E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B736907-27A3-4DA4-B53B-D1259F0913E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B736907-27A3-4DA4-B53B-D1259F0913E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B736907-27A3-4DA4-B53B-D1259F0913E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8C92A4C2-DD10-4947-B4E5-2B43B601A0CB}
+	EndGlobalSection
+EndGlobal
